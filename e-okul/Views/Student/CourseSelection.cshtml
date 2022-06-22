@@ -1,0 +1,86 @@
+﻿@*@model IEnumerable<Lecture>
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Course Selection</h2>
+            <hr />
+        </div>
+*@
+@*@for (int i = 0; i < Model.Count(); i++)
+        {
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="math" asp-for=@Model. id="math" value="Math">
+        <label class="form-check-label" for="math">
+        Math
+        </label>
+        </div>
+        }
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="math" asp-for=@Model.Name id="math" value="Math">
+        <label class="form-check-label" for="math">
+        Math
+        </label>
+        </div>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="chemistry" asp-for=@Model.Name id="chemistry" value="Chemistry">
+        <label class="form-check-label" for="chemistry">
+        Chemistry
+        </label>
+        </div>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="bio" asp-for=@Model.Name id="bio" value="Biology">
+        <label class="form-check-label" for="bio">
+        Biology
+        </label>
+        </div>
+        <div class="mt-2">
+        <button type="submit" class="btn btn-primary" style="width:150px">Save</button>
+        <a asp-controller="Student" asp-action="Index" class="btn btn-secondary" style="width:150px">
+        Go To Homepage
+        </a>
+        </div>
+        </div>
+
+        </form>*@
+
+
+
+@model e_okul.Models.ViewModels.LectureListVM
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Course Selection</h2>
+            <hr />
+        </div>
+        @using (Html.BeginForm("CourseSelection", "Student", FormMethod.Post))
+        {
+            for (var i = 0; i < Model.LecturesWithCheck.Count; i++)
+            {
+                <table>
+                    <tr>
+                        <td>
+                            @Html.HiddenFor(m => Model.LecturesWithCheck[i].Lecture.Id)
+                            @Html.HiddenFor(m => Model.LecturesWithCheck[i].Lecture.Name)
+                            @Html.HiddenFor(m=>Model.LecturesWithCheck[i].Lecture.Quota)
+                            @Html.CheckBoxFor(m => Model.LecturesWithCheck[i].Checked, Model.LecturesWithCheck[i].Checked == true ? new {@class="form-check-input", disabled = "disabled"} : new {@class="form-check-input"})
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => Model.LecturesWithCheck[i].Lecture.Name)
+                        </td>
+                    </tr>
+                </table>
+
+            }
+            <button type="submit" class="btn btn-primary mt-2" style="width:150px">Save</button>
+        }
+
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+        }

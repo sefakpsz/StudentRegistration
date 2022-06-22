@@ -1,0 +1,39 @@
+﻿@model e_okul.Models.ApplicationUser
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Sign Up</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Surname"></label>
+            <input asp-for="Surname" class="form-control" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+        < class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="role" id="stu" asp-for="Role" value="Student">
+                <label class="form-check-label" for="stu">
+                    Student
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary end" style="width:150px">Sign Up</button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Go To Homepage
+        </a>
+    </div>
+    </div>
+</form>
+
+@section Scripts{
+@{
+    <partial name="_ValidationScriptsPartial" />
+}
+}

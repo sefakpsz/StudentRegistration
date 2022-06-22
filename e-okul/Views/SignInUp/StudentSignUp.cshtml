@@ -1,0 +1,56 @@
+﻿@model e_okul.Models.Student
+
+<form method="post">
+    <input asp-for="@Model.Name" hidden />
+    <input asp-for="@Model.Surname" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Sign Up as Student</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" disabled />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Surname"></label>
+            <input asp-for="Surname" class="form-control" disabled />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="section" id="num" asp-for="Section" value="Numerical">
+                <label class="form-check-label" for="num">
+                    Numerical
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="section" id="ling" asp-for="Section" value="Linguistic">
+                <label class="form-check-label" for="ling">
+                    Linguistic
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Class"></label>
+            <input asp-for="Class" class="form-control" />
+            <span asp-validation-for="Class" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ClassLetter"></label>
+            <input asp-for="ClassLetter" class="form-control" />
+            <span asp-validation-for="ClassLetter" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Sign Up</button>
+        <a asp-controller="Student" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Go To Homepage
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+@{
+    <partial name="_ValidationScriptsPartial" />
+}
+}
